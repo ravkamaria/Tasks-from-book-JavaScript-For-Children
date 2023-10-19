@@ -97,59 +97,56 @@
 //Гра "Шибениця"
 
 const words = [
-    "javascript",
-    "monkey",
-    "amazing",
-    "pancake",
-    "elephant",
-    "icecream",
-  ];
-  
-  let word = words[Math.floor(Math.random() * words.length)];
-  console.log(word);
-  
-  const answerArray = [];
-  for (let i = 0; i < word.length; i++) {
-    answerArray[i] = "_";
-    // answerArray.push("_");
-  }
-  console.log(answerArray);
-  let remainingLetters = word.length;
-  let remainingAttempts = 15;
-  
-  while (remainingLetters > 0 && remainingAttempts > 0) {
-    alert("Guess the word " + answerArray.join(" "));
-    let guess = prompt("Guess a letter, or click Cancel to stop playing.");
-    if (guess === null) {
+  "javascript",
+  "monkey",
+  "amazing",
+  "pancake",
+  "elephant",
+  "icecream",
+];
+
+let word = words[Math.floor(Math.random() * words.length)];
+console.log(word);
+
+const answerArray = [];
+for (let i = 0; i < word.length; i++) {
+  answerArray[i] = "_";
+  // answerArray.push("_");
+}
+console.log(answerArray);
+let remainingLetters = word.length;
+let remainingAttempts = 15;
+
+while (remainingLetters > 0 && remainingAttempts > 0) {
+  alert("Guess the word " + answerArray.join(" "));
+  switch (remainingAttempts) {
+    case 0:
       alert("Game over!");
       break;
-    } else if (guess.length !== 1) {
-      alert("Please enter a single letter.");
-    } else {
-      for (let j = 0; j < word.length; j++) {
-        if (word[j] === guess.toLowerCase()) {
-          if(answerArray.includes(guess.toLowerCase())){
-            alert("Letter " + guess.toLowerCase() + " is already opened!")
-          } else {
-          answerArray[j] = guess.toLowerCase();
-          remainingLetters--;
-          console.log(remainingLetters);
-          }
-        }
-      }
-      remainingAttempts--;
-      switch (remainingAttempts) {
-        case 0:
-          alert("Game over!");
-          break;
-        case 1:
-          alert(remainingAttempts + " attempt left");
-          break;
-        default:
-          alert(remainingAttempts + " attempts left");
+    case 1:
+      alert(remainingAttempts + " attempt left");
+      break;
+    default:
+      alert(remainingAttempts + " attempts left");
+  }
+  let guess = prompt("Guess a letter, or click Cancel to stop playing.");
+  if (guess === null) {
+    alert("Game over!");
+    break;
+  } else if (guess.length !== 1) {
+    alert("Please enter a single letter.");
+  } else if (answerArray.includes(guess.toLowerCase())) {
+    alert("Letter " + guess.toLowerCase() + " is already opened!");
+    remainingAttempts++;
+  } else {
+    for (let j = 0; j < word.length; j++) {
+      if (word[j] === guess.toLowerCase()) {
+        answerArray[j] = guess.toLowerCase();
+        remainingLetters--;
       }
     }
   }
-  alert(answerArray.join(" "));
-  alert("Good job! The answer was " + word);
-  
+  remainingAttempts--;
+}
+alert(answerArray.join(" "));
+alert("Good job! The answer was " + word);
