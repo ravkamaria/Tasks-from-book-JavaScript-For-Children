@@ -23,21 +23,21 @@ function getDistance(event, target) {
 
 function getDistanceHint(distance) {
   if (distance < 20) {
-    return "Boiling hot!"; //отримуємо рядок, що показує відстань;
+    return "Boiling hot!🔥🔥🔥"; //отримуємо рядок, що показує відстань;
   } else if (distance < 40) {
-    return "Really hot!";
+    return "Really hot! ☀️☀️☀️";
   } else if (distance < 80) {
-    return "Hot!";
+    return "Hot! 🌤🌤🌤";
   } else if (distance < 120) {
-    return "Warm!";
+    return "Warm! 🌥🌥🌥";
   } else if (distance < 160) {
-    return "Cold!";
+    return "Cold! ☁️☁️☁️";
   } else if (distance < 320) {
-    return "Really cold!";
+    return "Really cold! ⛈⛈⛈";
   } else if(distance < 540) {
-    return "Really really cold!"
+    return "Really really cold! 🌨🌨🌨"
   } else {
-    return "Freezing!";
+    return "Freezing! ❄️❄️❄️";
   }
 }
 
@@ -49,7 +49,7 @@ $("#map").click(function (event) {
   $("#distance").text(distanceHint);
   $("#attemps").text(`${attemptsLeft} attempts left!`)
   if (distance < 15) {
-    alert("Found the treasure in " + attampt + " clicks!"); //виводимо повідомлення, що гравець переміг!
+    alert("You WON!!! Found the treasure in " + attampt + " clicks!"); //виводимо повідомлення, що гравець переміг!
     $("#distance").text("");
     $("#attemps").text("")
   }
